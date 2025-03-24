@@ -109,11 +109,12 @@
                     <td>{{ $product->ten_san_pham }}</td>
                     <td>{{ $product->category->ten_danh_muc ?? 'Chưa có danh mục' }}</td>
                     <td>
-                        @if ($product->image)
-                            <img src="" alt="{{ $product->ten_san_pham }}" width="60">
+                        @if ($product->hinh_anh)
+                            <img src="{{ asset('storage/' . $product->hinh_anh) }}" alt="" width="100">
                         @else
                             Không có ảnh
                         @endif
+
                     </td>
                     <td>{{ number_format($product->gia, 0, ',', '.') }} VND</td>
                     <td>
@@ -135,7 +136,13 @@
                     <td>
                         <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-secondary btn-sm">Xem</a>
                         <a href="" class="btn btn-warning btn-sm">Sửa</a>
-                        <a href="#" class="btn btn-danger btn-sm">Xóa</a>
+                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
+                            style="display:inline;"
+                            onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

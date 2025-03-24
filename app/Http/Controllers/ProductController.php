@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -89,6 +90,7 @@ class ProductController extends Controller
             'gia'            => 'required|numeric|min:0|max:99999999',
             'gia_khuyen_mai' => 'nullable|numeric|min:0|lt:gia',
             'so_luong'       => 'required|integer|min:1',
+            'ngay_nhap'      => 'nullable|date',
             'mo_ta'          => 'nullable|string',
             'trang_thai'     => 'required|boolean'
         ], [
@@ -127,17 +129,20 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
 
+        // Xóa ảnh sản phẩm nếu có
+        if ($product->hinh_anh) {
+            Storage::disk('public')->delete($product->hinh_anh);
+        }
 
+        // Xóa sản phẩm
+        $product->delete();
 
-
-
-
-
-
-
-
-
+        return redirect()->route('admin.products.index')->with('success', 'Sản phẩm đã được xóa thành công.');
+    }
 
     // public function edit($id)
     // {

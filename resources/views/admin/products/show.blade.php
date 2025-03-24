@@ -12,8 +12,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4">
-                    @if ($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->ten_san_pham }}"
+                    @if ($product->hinh_anh)
+                        <img src="{{ asset('storage/' . $product->hinh_anh) }}" alt="{{ $product->ten_san_pham }}"
                             class="img-fluid rounded">
                     @else
                         <p>Không có ảnh</p>
@@ -35,7 +35,7 @@
                         </tr>
                         <tr>
                             <th>Danh mục:</th>
-                            <td>{{ $product->categories->ten_danh_muc ?? 'Chưa có danh mục' }}</td>
+                            <td>{{ $product->category->ten_danh_muc ?? 'Chưa có danh mục' }}</td>
                         </tr>
                         <tr>
                             <th>Giá:</th>
@@ -75,7 +75,12 @@
             <div class="mt-3">
                 <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Quay lại</a>
                 <a href="" class="btn btn-warning">Sửa</a>
-                <a href="#" class="btn btn-danger">Xóa</a>
+                <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;"
+                    onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </form>
             </div>
         </div>
     </div>

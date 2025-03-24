@@ -18,5 +18,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/store', [ProductController::class, 'store'])->name('store');
         // Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('edit');
         // Route::put('/{id}/update', [ProductController::class, 'update'])->name('update');
+        Route::delete('/{id}/destroy', [ProductController::class, 'destroy'])->name('destroy');
     });
 });

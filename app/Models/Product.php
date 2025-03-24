@@ -14,6 +14,7 @@ class Product extends Model
         'ma_san_pham',
         'ten_san_pham',
         'category_id',
+        'hinh_anh',
         'gia',
         'gia_khuyen_mai',
         'so_luong',
