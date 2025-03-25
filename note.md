@@ -41,3 +41,9 @@ php artisan make:controller TenController  # Tạo một controller mới
 ```sh
 php artisan serve  # Chạy Laravel với built-in server
 ```
+
+## 6. Chạy Ảnh
+
+```sh
+-php artisan storage:link # Tạo liên kết các file để hiển thị ra người dùng
+```

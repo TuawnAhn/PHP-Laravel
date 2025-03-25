@@ -60,6 +60,10 @@
                             <td>{{ date('d/m/Y', strtotime($product->ngay_nhap)) }}</td>
                         </tr>
                         <tr>
+                            <th>Mô tả:</th>
+                            <td>{{ $product->mo_ta }}</td>
+                        </tr>
+                        <tr>
                             <th>Trạng thái:</th>
                             <td>
                                 @if ($product->trang_thai)

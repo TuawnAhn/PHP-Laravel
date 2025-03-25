@@ -11,7 +11,7 @@
             <div class="card text-bg-primary mb-3">
                 <div class="card-header">Sản phẩm</div>
                 <div class="card-body">
-                    <h5 class="card-title">150 sản phẩm</h5>
+                    <h5 class="card-title">{{ $productCount }} sản phẩm</h5>
                     <p class="card-text">Quản lý các sản phẩm trong hệ thống.</p>
                 </div>
             </div>

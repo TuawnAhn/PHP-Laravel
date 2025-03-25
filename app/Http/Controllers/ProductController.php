@@ -61,11 +61,13 @@ class ProductController extends Controller
         //Hiển thị thông tin chi tiết của sản phẩm ra giao diện
         //Xây dựng giao diện trang thêm, sửa
     }
+
     public function create()
     {
         $categories = Category::all(); // Lấy danh sách danh mục để hiển thị trong form
         return view('admin.products.create', compact('categories'));
     }
+
     public function store(Request $request)
     {
         // $dataNew = [
@@ -129,6 +131,72 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        return view('admin.products.edit', compact('product', 'categories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        // Validate dữ liệu với thông báo lỗi tiếng Việt
+        $dataNew = $request->validate([
+            'ma_san_pham'    => 'required|string|max:20|unique:products,ma_san_pham,' . $id,
+            'ten_san_pham'   => 'required|string|max:255',
+            'category_id'    => 'required|exists:categories,id',
+            'hinh_anh'       => 'nullable|image|mimes:jpg,png,jpeg,gif',
+            'gia'            => 'required|numeric|min:0|max:99999999',
+            'gia_khuyen_mai' => 'nullable|numeric|min:0|lt:gia',
+            'so_luong'       => 'required|integer|min:1',
+            'ngay_nhap'      => 'nullable|date',
+            'mo_ta'          => 'nullable|string',
+            'trang_thai'     => 'required|boolean'
+        ], [
+            'required'      => ':attribute không được để trống.',
+            'string'        => ':attribute phải là chuỗi.',
+            'max.string'    => ':attribute không được vượt quá :max ký tự.',
+            'max.numeric'   => ':attribute không được lớn hơn :max.',
+            'min.numeric'   => ':attribute phải lớn hơn hoặc bằng :min.',
+            'integer'       => ':attribute phải là số nguyên.',
+            'unique'        => ':attribute đã tồn tại.',
+            'numeric'       => ':attribute phải là số.',
+            'date'          => ':attribute phải là ngày hợp lệ.',
+            'image'         => ':attribute phải là hình ảnh.',
+            'in'            => ':attribute phải có giá trị hợp lệ: :values.',
+            'boolean'       => ':attribute phải là đúng hoặc sai.',
+            'same'          => ':attribute phải giống với :other.'
+        ], [
+            'ma_san_pham'    => 'Mã sản phẩm',
+            'ten_san_pham'   => 'Tên sản phẩm',
+            'category_id'    => 'Danh mục',
+            'hinh_anh'       => 'Hình ảnh',
+            'gia'            => 'Giá',
+            'gia_khuyen_mai' => 'Giá khuyến mãi',
+            'so_luong'       => 'Số lượng',
+            'mo_ta'          => 'Mô tả',
+            'trang_thai'     => 'Trạng thái'
+        ]);
+
+
+        //Xử lý hình ảnh
+        if ($request->hasFile('hinh_anh')) {
+            $imgPath = $request->file('hinh_anh')->store('images/products', 'public');
+            $dataNew['hinh_anh'] = $imgPath;
+        }
+
+        //Nếu có hình ảnh mưới thì xoá hình ảnh cũ đi
+        if ($product->hinh_anh) {
+            Storage::disk('public')->delete($product->hinh_anh);
+        }
+
+        $product->update($dataNew);
+        return redirect()->route('admin.products.index');
+    }
+
+    
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
@@ -143,11 +211,4 @@ class ProductController extends Controller
 
         return redirect()->route('admin.products.index')->with('success', 'Sản phẩm đã được xóa thành công.');
     }
-
-    // public function edit($id)
-    // {
-    //     $product = Product::findOrFail($id);
-    //     $categories = Category::all();
-    //     return view('admin.products.edit', compact('product', 'categories'));
-    // }
 }

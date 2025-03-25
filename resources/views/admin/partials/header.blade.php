@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-shield-alt"></i> Trang Quản Trị
         </a>
 
