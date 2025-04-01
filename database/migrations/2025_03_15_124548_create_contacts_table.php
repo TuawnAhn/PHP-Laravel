@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('subject');
+            $table->string('email');
+            $table->string('phone')->nullable(); // Thêm số điện thoại
             $table->text('message');
+            $table->boolean('trang_thai')->default(true); //Xét giá trị mặc định
+            $table->timestamps();
         });
     }
 

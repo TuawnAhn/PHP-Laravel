@@ -25,7 +25,73 @@ body {
 footer {
     background-color: #212529;
     color: #ffffff;
-
     width: 100%;
     bottom: 0;
+}
+
+/* Định dạng chung cho form */
+.auth-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Tiêu đề */
+.auth-form h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input fields */
+.auth-form .form-control {
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.auth-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Nút đăng nhập / đăng ký */
+.auth-form .btn-primary {
+    width: 100%;
+    height: 45px;
+    font-size: 18px;
+    border-radius: 5px;
+    background: #007bff;
+    border: none;
+    color: #ffffff;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.auth-form .btn-primary:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Link chuyển đổi giữa login & register */
+.auth-form .auth-switch {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-form .auth-switch a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-form .auth-switch a:hover {
+    text-decoration: underline;
 }

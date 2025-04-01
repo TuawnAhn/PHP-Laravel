@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
+            $table->string('name');
+            $table->string('image')->nullable();
+            $table->boolean('trang_thai')->default(true); //Xét giá trị mặc định
+            $table->timestamps();
         });
     }
 

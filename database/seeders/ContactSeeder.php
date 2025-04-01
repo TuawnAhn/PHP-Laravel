@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -13,20 +14,6 @@ class ContactSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('contacts')->insert([
-            [
-                'name' => 'Nguyễn Văn A',
-                'email' => 'a@gmail.com',
-                'subject' => 'OK',
-                'message' => 'OK',
-            ],
-            [
-                'name' => 'Nguyễn Văn B',
-                'email' => 'b@gmail.com',
-                'sdt' => '0123456789',
-                'subject' => 'OK',
-                'message' => 'OK',
-            ]
-        ]);
+        Contact::factory()->count(5)->create();
     }
 }

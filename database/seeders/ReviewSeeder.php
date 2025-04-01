@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Review;
+use App\Models\Customer;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ReviewSeeder extends Seeder
 {
@@ -13,19 +14,16 @@ class ReviewSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('reviews')->insert([
-            [
-                'customer_id' => 1,
-                'product_id' => 1,
-                'content' => 'Sản phẩm rất tốt',
-                'rating' => 1,
-            ],
-            [
-                'product_id' => 1,
-                'user_id' => 2,
-                'content' => 'Sản phẩm không tốt',
-                'rating' => 2,
-            ]
-        ]);
+        // Tạo 10 khách hàng
+        Customer::factory()->count(10)->create()->each(function ($customer) {
+            // Lấy ngẫu nhiên từ 1 đến 5 sản phẩm từ bảng Product
+            Product::inRandomOrder()->limit(rand(1, 5))->get()->each(function ($product) use ($customer) {
+                // Tạo review cho từng sản phẩm và khách hàng
+                Review::factory()->create([
+                    'customer_id' => $customer->id,
+                    'product_id'  => $product->id,
+                ]);
+            });
+        });
     }
 }

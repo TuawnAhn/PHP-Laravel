@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -196,19 +197,43 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    
+
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
 
         // Xóa ảnh sản phẩm nếu có
-        if ($product->hinh_anh) {
-            Storage::disk('public')->delete($product->hinh_anh);
-        }
+        // if ($product->hinh_anh) {
+        //     Storage::disk('public')->delete($product->hinh_anh);
+        // }
+        DB::table('reviews')->where('product_id', $product->id)->delete();
 
         // Xóa sản phẩm
         $product->delete();
 
         return redirect()->route('admin.products.index')->with('success', 'Sản phẩm đã được xóa thành công.');
+    }
+    public function bin()
+    {
+        $products = Product::onlyTrashed()->get();
+        return view('admin.products.bin', compact('products'));
+    }
+    public function restore($id)
+    {
+        $product = Product::withTrashed()->findOrFail($id);
+        $product->restore();
+        return redirect()->route('admin.products.index')->with('success', 'Khôi phục sản phẩm thành công.');
+    }
+    public function forceDelete($id)
+    {
+        $product = Product::withTrashed()->findOrFail($id);
+
+        // Xóa tất cả các đánh giá liên quan trước khi xóa sản phẩm
+        DB::table('reviews')->where('product_id', $product->id)->delete();
+
+        // Xóa sản phẩm vĩnh viễn
+        $product->forceDelete();
+
+        return redirect()->route('admin.products.index')->with('success', 'Xóa vĩnh viễn sản phẩm thành công.');
     }
 }

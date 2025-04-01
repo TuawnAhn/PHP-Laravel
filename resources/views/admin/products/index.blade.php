@@ -5,7 +5,13 @@
 @section('content')
     <h1 class="mb-4">Danh sách sản phẩm</h1>
     <a href="{{ route('admin.products.create') }}" class="btn btn-primary btn-sm">Thêm sản phẩm</a>
+    <a href="{{ route('admin.products.bin') }}" class="btn btn-danger btn-sm">Thùng rác</a>
 
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <!-- Form tìm kiếm -->
     <div class="card shadow-sm border-0 mb-4">
@@ -166,12 +172,12 @@
         {{ $products->links('pagination::bootstrap-4') }}
     </div>
 
-    @if (session('success'))
+    {{-- @if (session('success'))
         <script>
             window.onload = function() {
                 alert("{{ session('success') }}");
             }
         </script>
-    @endif
+    @endif --}}
 
 @endsection

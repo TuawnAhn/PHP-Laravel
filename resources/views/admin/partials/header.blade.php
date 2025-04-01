@@ -5,7 +5,7 @@
         </a>
 
         <div class="d-flex align-items-center ms-auto">
-            <span class="me-3 text-white">Xin chào, <strong>Tuấn Anh</strong></span>
+            <span class="me-3 text-white">Xin chào, <strong>{{ auth()->user()->name }}</strong></span>
         </div>
     </div>
 </nav>

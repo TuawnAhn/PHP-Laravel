@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('ten_danh_muc', 255);
             $table->boolean('trang_thai')->default(true);
             $table->timestamps(); //Tự tạo 2 cột created_at và updated_at
+            
 
         });
     }
