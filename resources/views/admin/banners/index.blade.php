@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Danh sách Banner')
+@section(section: 'title', content: 'Danh sách Banner')
 
 @section('content')
     <h1 class="mb-4">Danh sách Banner</h1>
