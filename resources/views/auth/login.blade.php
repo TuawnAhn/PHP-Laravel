@@ -31,7 +31,7 @@
                 <input type="checkbox" id="remember" name="remember" required>
                 Nhớ tôi
             </label>
-            <a href="#">Quên mật khẩu?</a>
+            <a href="{{ route('password.request') }}">Quên mật khẩu?</a>
 
         </div>
 
