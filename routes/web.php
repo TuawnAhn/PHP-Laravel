@@ -8,6 +8,8 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\SliderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
@@ -127,4 +129,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         Route::put('/{id}/restore',    [CustomerController::class, 'restore'])->name('restore');
         Route::delete('/{id}/forceDelete',   [CustomerController::class, 'forceDelete'])->name('forceDelete');
     });
+});
+Route::prefix('clients')->name('clients.')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 });

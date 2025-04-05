@@ -43,6 +43,7 @@ php artisan make:model TênModel  # Tạo một model mới
 php artisan make:controller TenController  # Tạo một controller mới
 php artisan make:factory TenFactory  # Tạo một factory mới
 php artisan make:middleware tenMiddleware  # Tạo một middleware mới
+php artisan make:controller Api/TenController --api # Tạo một controller API
 ```
 
 ## 5. Chạy Laravel Server
