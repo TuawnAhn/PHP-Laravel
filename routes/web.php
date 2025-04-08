@@ -8,16 +8,18 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Client\HomeController;
-use App\Http\Controllers\Client\SliderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ShopController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\Client\ContactsController;
+use App\Http\Controllers\Client\ClientAuthController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Admin Auth
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
@@ -27,8 +29,13 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkReques
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('/reset-password', [ForgotPasswordController::class, 'reset'])->name('password.update');
+//Client Auth
+Route::post('/client-register', [ClientAuthController::class, 'register'])->name('client.register');
+Route::post('/client-login', [ClientAuthController::class, 'login'])->name('client.login');
+Route::post('/logout', [ClientAuthController::class, 'logout'])->name('logout');
 
 
+//Admin
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -130,7 +137,24 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         Route::delete('/{id}/forceDelete',   [CustomerController::class, 'forceDelete'])->name('forceDelete');
     });
 });
+
+//Client
 Route::prefix('clients')->name('clients.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+    Route::get('/blog/{id}', [HomeController::class, 'showPost'])->name('showPost');
+
+
+    // Danh sách sản phẩm
+    Route::prefix('shop')->name('shop.')->group(function () {
+        Route::get('/', [ShopController::class, 'index'])->name('index');
+        Route::get('/product/{id}', [ShopController::class, 'detail'])->name('detail');
+        Route::post('/product/{id}/review', [ShopController::class, 'storeReview'])->name('storeReview');
+    });
+
+    // Liên hệ
+    Route::prefix('contact')->name('contact.')->group(function () {
+        Route::get('/', [ContactsController::class, 'index'])->name('index');
+        Route::post('/contact', [ContactsController::class, 'store'])->name('store');
+    });
 });

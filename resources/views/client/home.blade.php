@@ -58,6 +58,7 @@
         </div>
     </section>
     <!-- /Slider -->
+
     <!-- Collection -->
     <div class="pt-24">
         <div class="container">
@@ -173,6 +174,7 @@
         </div>
     </div>
     <!-- /Collection -->
+
     <!-- Sellers -->
     <section class="flat-spacing-3 overflow-hidden">
         <div class="container">
@@ -931,7 +933,8 @@
                             <div class="swiper-slide">
                                 <div class="card-product card-product-size">
                                     <div class="card-product-wrapper">
-                                        <a href="product-detail.html" class="product-img">
+                                        <a href="{{ route('clients.shop.detail', ['id' => $product->id]) }}"
+                                            class="product-img">
                                             <img class="img-product lazyload"
                                                 data-src="{{ asset('storage/' . $product->hinh_anh) }}"
                                                 src="{{ asset('storage/' . $product->hinh_anh) }}" alt="image-product">
@@ -1314,81 +1317,4 @@
         </div>
     </section>
     <!-- /Shop Gram -->
-    <!-- Icon box -->
-    <div class="line-top flat-spacing-5">
-        <div class="container">
-            <div class="mw-1 m-auto">
-                <div dir="ltr" class="swiper tf-swiper wow fadeInUp "
-                    data-swiper='{
-                        "slidesPerView": 1,
-                        "spaceBetween": 12,
-                        "speed": 800,
-                        "preventInteractionOnTransition": false,
-                        "touchStartPreventDefault": false,
-                        "pagination": { "el": ".sw-pagination-iconbox", "clickable": true },
-                        "breakpoints": {
-                            "575": { "slidesPerView": 2, "spaceBetween": 12, "slidesPerGroup": 2},
-                            "768": { "slidesPerView": 3, "spaceBetween": 24, "slidesPerGroup": 2},
-                            "1200": { "slidesPerView": 4, "spaceBetween": 42, "slidesPerGroup": 2}
-                        }
-                    }'>
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="tf-icon-box style-2">
-                                <div class="box-icon">
-                                    <i class="icon icon-shipping"></i>
-                                </div>
-                                <div class="content">
-                                    <div class="title">Miễn phí vận chuyển
-                                    </div>
-                                    <p class="desc">Giao hàng miễn phí cho tất cả các đơn hàng
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="tf-icon-box style-2">
-                                <div class="box-icon">
-                                    <i class="icon icon-gift"></i>
-                                </div>
-                                <div class="content">
-                                    <div class="title">Quà tặng
-                                    </div>
-                                    <p class="desc">Đóng gói hoàn hảo để làm quà tặng
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="tf-icon-box style-2">
-                                <div class="box-icon">
-                                    <i class="icon icon-return"></i>
-                                </div>
-                                <div class="content">
-                                    <div class="title">Trả hàng miễn phí
-                                    </div>
-                                    <p class="desc">Trong vòng 14 ngày để trả lại
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="tf-icon-box style-2">
-                                <div class="box-icon">
-                                    <i class="icon icon-support"></i>
-                                </div>
-                                <div class="content">
-                                    <div class="title">Hỗ trợ trực tuyến
-                                    </div>
-                                    <p class="desc">Chúng tôi hỗ trợ khách hàng
-                                        24/7</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex d-xl-none sw-dot-default sw-pagination-iconbox justify-content-center"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

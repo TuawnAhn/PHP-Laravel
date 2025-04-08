@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 18, 2025 at 02:39 PM
+-- Generation Time: Apr 08, 2025 at 07:12 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.20
 
@@ -29,8 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `banners` (
   `id` bigint UNSIGNED NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `trang_thai` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `name`, `image`, `trang_thai`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(5, 'Manchester City', 'images/banners/JmaHRFFy8inu8pXCr84CpeFFrpmDHxkuPqxiDjFa.jpg', 1, '2025-03-27 05:49:56', '2025-03-27 05:49:59', '2025-03-27 05:49:59'),
+(6, 'Phong cách', 'images/banners/F8mHzaniJnfHlror4uRbvYG9z3r9FIfx9DqdAN6J.png', 1, '2025-04-05 01:15:27', '2025-04-05 01:15:27', NULL),
+(7, 'Elegance', 'images/banners/sXfovkKkEGhZlNJewV4G76VMYy2HFU9Ph8XISM7P.png', 1, '2025-04-05 01:15:46', '2025-04-05 01:15:46', NULL),
+(8, 'Elevate Your', 'images/banners/DwLd2StqAE6hYTxphfMLHryj2j4Q8gxjSTu3azt5.png', 1, '2025-04-05 01:16:04', '2025-04-05 01:16:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -67,34 +82,22 @@ CREATE TABLE `categories` (
   `ten_danh_muc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `trang_thai` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `ten_danh_muc`, `trang_thai`, `created_at`, `updated_at`) VALUES
-(1, 'repellendus', 1, '2025-03-18 05:20:56', '2025-03-18 05:20:56'),
-(2, 'explicabo', 0, '2025-03-18 05:20:56', '2025-03-18 05:20:56'),
-(3, 'hic', 0, '2025-03-18 05:20:56', '2025-03-18 05:20:56'),
-(4, 'culpa', 0, '2025-03-18 05:20:56', '2025-03-18 05:20:56'),
-(5, 'dolorem', 1, '2025-03-18 05:20:56', '2025-03-18 05:20:56'),
-(16, 'fugiat', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(17, 'laboriosam', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(18, 'quam', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(19, 'explicabo', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(20, 'voluptatem', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(21, 'ratione', 1, '2025-03-18 05:43:17', '2025-03-18 05:43:17'),
-(22, 'et', 1, '2025-03-18 05:43:17', '2025-03-18 05:43:17'),
-(23, 'at', 1, '2025-03-18 05:43:17', '2025-03-18 05:43:17'),
-(24, 'itaque', 1, '2025-03-18 05:43:17', '2025-03-18 05:43:17'),
-(25, 'reiciendis', 1, '2025-03-18 05:43:17', '2025-03-18 05:43:17'),
-(26, 'autem', 1, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(27, 'et', 1, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(28, 'expedita', 1, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(29, 'et', 1, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(30, 'qui', 0, '2025-03-18 05:45:41', '2025-03-18 05:45:41');
+INSERT INTO `categories` (`id`, `ten_danh_muc`, `trang_thai`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(3, 'consectetur', 0, '2025-03-26 01:28:46', '2025-04-06 07:42:28', '2025-04-06 07:42:28'),
+(4, 'unde', 0, '2025-03-26 01:28:46', '2025-04-06 07:42:25', '2025-04-06 07:42:25'),
+(5, 'Sơ mi', 1, '2025-03-26 01:28:46', '2025-04-06 07:44:15', NULL),
+(6, 'Quần', 1, '2025-03-27 04:46:33', '2025-04-06 07:46:46', NULL),
+(7, 'Đồ Bộ', 1, '2025-03-27 04:49:13', '2025-04-06 07:42:36', NULL),
+(8, 'T-Shirt', 1, '2025-04-05 01:34:39', '2025-04-05 01:34:39', NULL),
+(9, 'Váy', 1, '2025-04-05 02:08:40', '2025-04-05 02:08:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -106,9 +109,30 @@ CREATE TABLE `contacts` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trang_thai` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `message`, `trang_thai`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Estrella Miller', 'ohara.reta@example.net', NULL, 'Earum debitis praesentium sint nihil expedita nihil nam. Fuga dolores consequuntur doloremque autem. In voluptate eos voluptas illo exercitationem atque. Voluptate amet quia porro nam. Ut est fugiat est ab dicta praesentium at quos. Nisi molestiae suscipit corrupti in sint tenetur dolor facilis.', 1, '2025-03-27 00:47:12', '2025-03-27 00:47:12', NULL),
+(2, 'Brando Douglas MD', 'napoleon.kemmer@example.com', NULL, 'Consequatur sint architecto natus quisquam tempore consequuntur repellat. Libero consequuntur laudantium eaque autem est repellendus repudiandae. Alias explicabo repellendus sit earum nobis itaque ratione. Quia molestiae non qui omnis est nostrum.', 0, '2025-03-27 00:47:12', '2025-03-27 00:47:12', NULL),
+(3, 'Lisandro Bashirian', 'devan.williamson@example.com', NULL, 'Officiis error aut ullam consectetur beatae et. Labore excepturi itaque hic consequatur. Et molestiae voluptatibus iste et. Quia nihil quibusdam et ad sed labore. Assumenda possimus aut accusantium voluptatem ea quisquam et minus. Voluptas omnis explicabo veritatis nulla.', 0, '2025-03-27 00:47:12', '2025-03-27 00:47:12', NULL),
+(4, 'Jaquelin Braun', 'robel.keven@example.org', NULL, 'Porro impedit magni consectetur doloribus sed magnam numquam suscipit. Illo saepe nesciunt autem praesentium sunt rem. Reprehenderit provident quam at. Nihil fuga voluptate possimus non aliquid ut cumque.', 0, '2025-03-27 00:47:12', '2025-03-27 00:47:12', NULL),
+(6, 'anhntph', 'anhntph51526@gmail.com', '0325687430', 'Chỉnh sửa UI trang chi tiết sản phẩm', 0, '2025-04-07 23:48:51', '2025-04-07 23:48:51', NULL),
+(7, 'dungntph', 'dungntph51531@gmail.com', NULL, 'ok', 0, '2025-04-07 23:51:24', '2025-04-07 23:51:24', NULL),
+(8, 'Dung', 'dungntph51531@gmail.com', '0383461205', 'Dung ăn cức', 0, '2025-04-07 23:52:03', '2025-04-07 23:54:08', '2025-04-07 23:54:08'),
+(9, 'Tạ Văn Định', 'dinhtv7@gmail.com', NULL, 'Vineta Mail', 0, '2025-04-08 00:02:56', '2025-04-08 00:02:56', NULL),
+(10, 'Tuấn Anh', 'tanh24.fpt@gmail.com', '1234567890', 'Vineta gửi chăm sóc khách hàng', 0, '2025-04-08 00:03:39', '2025-04-08 00:03:39', NULL),
+(11, 'anhntph', 'tanh24.fpt@gmail.com', NULL, 'ok', 0, '2025-04-08 00:05:36', '2025-04-08 00:05:36', NULL),
+(12, 'anhntph', 'tanh24.fpt@gmail.com', '0325687430', 'cải thiên ui', 0, '2025-04-08 00:06:45', '2025-04-08 00:06:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -121,16 +145,21 @@ CREATE TABLE `customers` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci
+  `address` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `address`) VALUES
-(1, 'Nguyễn Văn A', 'a@gmail.com', '0123456789', 'Ha Noi'),
-(2, 'Nguyễn Văn B', 'b@gmail.com', '0123456789', 'Ha Noi');
+INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `address`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 'Seth Williamson', 'trisha94@example.net', NULL, NULL, '2025-03-27 00:10:15', '2025-03-27 00:10:15', NULL),
+(4, 'Christophe Cole', 'carmelo17@example.net', '+1-678-681-4306', NULL, '2025-03-27 00:10:15', '2025-03-27 00:10:15', NULL),
+(5, 'Sigmund Crooks DVM', 'rstrosin@example.org', NULL, '49393 Fisher Extensions Suite 947\nRebeccafurt, OK 57274-1800', '2025-03-27 00:10:15', '2025-03-27 00:10:15', NULL),
+(21, 'Tuấn Anh', 'anhntph51526@gmail.com', '0325687430', 'ha noi', '2025-03-27 00:14:05', '2025-03-27 00:22:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -207,13 +236,22 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2025_03_13_131528_create_categories_table', 1),
 (6, '2025_03_15_115032_add_category_id_to_products_table', 1),
 (7, '2025_03_15_120159_add_hinh_anh_to_products_table', 1),
-(8, '2025_03_15_124520_create_customers_table', 1),
-(9, '2025_03_15_124530_create_banners_table', 1),
 (10, '2025_03_15_124540_create_posts_table', 1),
-(11, '2025_03_15_124548_create_contacts_table', 1),
-(12, '2025_03_15_124557_create_reviews_table', 1),
-(13, '2025_03_15_125703_add_customer_id_to_reviews_table', 1),
-(14, '2025_03_15_130127_add_product_id_to_reviews_table', 1);
+(18, '2025_03_15_124520_create_customers_table', 2),
+(19, '2025_03_15_124530_create_banners_table', 2),
+(20, '2025_03_15_124548_create_contacts_table', 2),
+(27, '2025_03_15_124557_create_reviews_table', 3),
+(28, '2025_03_15_125703_add_customer_id_to_reviews_table', 3),
+(29, '2025_03_15_130127_add_product_id_to_reviews_table', 3),
+(30, '2025_03_27_060652_create_posts_table', 3),
+(31, '2025_03_27_115152_add_deleted_at_to_products_table', 4),
+(32, '2025_03_27_120647_add_deleted_at_to_categories_table', 5),
+(33, '2025_03_27_123921_add_deleted_at_to_banners_table', 6),
+(34, '2025_03_27_125056_add_deleted_at_to_contacts_table', 7),
+(35, '2025_03_27_130008_add_deleted_at_to_posts_table', 8),
+(36, '2025_03_27_130935_add_deleted_at_to_reviews_table', 9),
+(37, '2025_03_28_105720_add_deleted_at_to_customers_table', 10),
+(38, '2025_04_03_121659_add_role_to_users_table', 11);
 
 -- --------------------------------------------------------
 
@@ -227,6 +265,13 @@ CREATE TABLE `password_reset_tokens` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_reset_tokens`
+--
+
+INSERT INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
+('tuananh123@gmail.com', '$2y$12$cXGZKOaPyzZoefSFYM3rBusnl8oyJ8NG2gq/SsrFFQHxG/sH1p0rG', '2025-04-03 05:46:44');
+
 -- --------------------------------------------------------
 
 --
@@ -236,10 +281,24 @@ CREATE TABLE `password_reset_tokens` (
 CREATE TABLE `posts` (
   `id` bigint UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `author` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `trang_thai` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `content`, `author`, `image`, `trang_thai`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 'Style thu hút ánh nhìn', 'Tenetur voluptatem adipisci nisi ad eveniet dolor. Ea sit non placeat saepe praesentium quod. Molestiae doloremque tenetur a. Iste velit dolores autem voluptatibus blanditiis odit et vitae.\r\n\r\nQuia architecto dolores ut corporis. Recusandae fugit dolor dignissimos dolorem et. Magni eaque at iusto et eaque et.\r\n\r\nDolore voluptatem quis nesciunt vero non eligendi rerum. Esse vel commodi quidem ipsa reiciendis dolorem. Corporis nesciunt distinctio dolorem corrupti. Qui maxime repudiandae nam sint.', 'Tuấn Anh', 'images/posts/GimZHlmh27NPh9HHoqMZtMAdidCNwngE6ZjG2GBa.jpg', 1, '2025-03-27 00:47:30', '2025-04-05 04:43:50', NULL),
+(3, 'Áo cổ trụ', 'Omnis eum qui impedit at nihil nam eos. Excepturi omnis voluptatem maiores voluptas dolor facere. Dolor quibusdam dolores asperiores optio consequatur. Optio eaque odit dolorem ad.\r\n\r\nIn delectus reprehenderit ducimus beatae id. Dolorem quis quis voluptas debitis ipsum nihil. Libero vero ratione hic natus consequatur. Accusamus qui alias similique officiis.\r\n\r\nQuo aliquam ducimus atque ut enim quo fuga. Necessitatibus asperiores eveniet dolorem et quia numquam. Tempore quaerat placeat necessitatibus quae rem blanditiis. Placeat consequatur labore quam quo inventore.', 'Quốc An', 'images/posts/5l4sWnoxfSgdzXeuCJ93syrRYJmEdW00as9e4knd.jpg', 1, '2025-03-27 00:47:30', '2025-04-05 04:45:43', NULL),
+(4, 'Gìay Adidas', 'Iure totam aperiam provident recusandae reprehenderit sunt. Incidunt modi quidem dolorem quas corrupti consequatur quo. Occaecati magni cum consectetur vero. Et iure qui officia est.\r\n\r\nAut itaque iure commodi sunt voluptates et quae. Itaque eveniet molestiae deserunt ea dolores nemo. Voluptatibus porro recusandae facilis quia sed sed et totam.\r\n\r\nFacilis quia debitis quis est. Autem qui libero dolore velit corporis suscipit.', 'Sofia Conroy', 'images/posts/KaQer04xwKrLPXXxTd7YSmzw07Tf5DxTl0p7LTWB.jpg', 1, '2025-03-27 00:47:30', '2025-04-05 04:43:21', NULL),
+(6, 'Nhà Giả Kimm', 'Nhà giả kim là tiểu thuyết được xuất bản lần đầu ở Brasil năm 1988, và là cuốn sách nổi tiếng nhất của nhà văn Paulo Coelho. Tác phẩm đã được dịch ra 67 ngôn ngữ và bán ra tới 95 triệu bản, trở thành một trong những cuốn sách bán chạy nhất mọi thời đại.', 'Ronaldo', 'images/posts/DBkodeQDIuPKZe44yFmuvLWTfbCDkngaytbzqujb.jpg', 1, '2025-03-27 00:49:02', '2025-04-05 04:44:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -260,65 +319,29 @@ CREATE TABLE `products` (
   `mo_ta` text COLLATE utf8mb4_unicode_ci,
   `trang_thai` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `ma_san_pham`, `ten_san_pham`, `category_id`, `hinh_anh`, `gia`, `gia_khuyen_mai`, `so_luong`, `ngay_nhap`, `mo_ta`, `trang_thai`, `created_at`, `updated_at`) VALUES
-(1, 'SP03', 'Iphone 12', 1, NULL, '20000000.00', '19000000.00', 100, '2022-01-01', 'Iphone 12', 1, '2025-03-18 05:20:56', NULL),
-(2, 'SP04', 'Acer nitro 5', 2, NULL, '20000000.00', '19000000.00', 100, '2022-01-01', 'Iphone 13', 1, '2025-03-18 05:20:56', NULL),
-(14, 'SP80', 'ab', 16, NULL, '4448959.45', '4389303.68', 10, '1985-02-26', 'Fuga laboriosam maxime soluta dolorem repellendus sequi placeat. Quae ut temporibus ut et dolorem. Minus ut reprehenderit vero voluptatem mollitia.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(15, 'SP25', 'est', 16, NULL, '9504911.04', '757178.39', 70, '1995-10-19', 'Minima nobis temporibus non. Possimus itaque quod harum labore officiis perferendis corrupti. Explicabo nisi beatae debitis rem dignissimos.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(16, 'SP50', 'doloribus', 16, NULL, '6240907.69', NULL, 44, '2015-01-13', 'Voluptatem enim vitae et ipsa animi molestiae recusandae vel. Et et asperiores provident consequatur aperiam ex dolores. Itaque assumenda vero debitis quo ad facilis vitae sit.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(17, 'SP33', 'et', 16, NULL, '1283139.44', NULL, 25, '1985-05-28', 'Repellat accusantium quos et cupiditate id. Est qui pariatur soluta vero perferendis. Facilis similique aut eaque iure est sit aut sunt.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(18, 'SP98', 'quia', 16, NULL, '8592319.49', NULL, 57, '1981-10-08', 'Enim esse voluptatem eveniet consequatur quisquam possimus laudantium quas. Sed cumque dolores qui alias. Quia quos at error. Officiis doloribus perspiciatis recusandae quod.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(19, 'SP47', 'quia', 16, NULL, '512157.33', NULL, 86, '1988-11-23', 'Aut quo sed minima voluptate repellendus in rerum. Inventore omnis quaerat dolores hic natus quia. Assumenda amet eos et eum autem alias. Aut ab eveniet voluptatibus eligendi officiis sint et.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(20, 'SP18', 'qui', 16, NULL, '7499621.98', '5880143.64', 55, '1987-05-16', 'Aspernatur fugit alias ut corrupti. Nam repellat sed repellendus placeat pariatur eveniet sed. Magnam vel beatae repellendus sint odit sit.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(21, 'SP88', 'tenetur', 16, NULL, '8585189.90', '6271735.04', 32, '2017-11-20', 'Deleniti minus est officia architecto nemo amet fugit. Illo beatae voluptatibus deleniti recusandae aut doloremque enim. Quod magni numquam accusantium.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(22, 'SP14', 'illo', 16, NULL, '977031.23', '4599506.94', 75, '2014-02-23', 'Fugit sequi minus qui eveniet est culpa. Et doloribus dolorem dolores nisi odit reprehenderit. Commodi et velit aut tenetur error provident.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(23, 'SP28', 'magni', 16, NULL, '9430109.28', NULL, 32, '2015-05-29', 'Facilis laborum qui ullam ad. Laboriosam eveniet est adipisci pariatur. Modi ut veniam natus voluptas harum facere ipsa architecto.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(24, 'SP99', 'eos', 17, NULL, '1070720.26', NULL, 13, '2000-04-02', 'Aut aliquam ab optio. Repudiandae iure quae corporis sint velit aut sit nobis. Facere officiis voluptatem aliquam odio iusto aperiam.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(25, 'SP58', 'saepe', 17, NULL, '214573.07', NULL, 15, '1971-01-31', 'Similique exercitationem aperiam quo eveniet. Unde voluptate sed incidunt omnis aut. Minima facere alias et reiciendis eius voluptas magnam. Explicabo occaecati sed odit omnis ipsam.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(26, 'SP49', 'est', 17, NULL, '6988969.83', '5949826.57', 11, '1987-05-30', 'Doloribus possimus numquam eum aut id illum voluptates quia. Laborum itaque assumenda voluptas nisi ut excepturi rerum. Unde beatae et qui rerum voluptatem voluptatem sunt.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(27, 'SP67', 'facilis', 17, NULL, '1481670.48', NULL, 60, '2019-10-17', 'Labore aut voluptatem et et quia. Eos placeat harum ut enim aliquam velit est. Accusantium blanditiis sed ratione doloribus possimus asperiores. Tempora earum voluptatem molestiae distinctio.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(28, 'SP30', 'nostrum', 17, NULL, '2515929.37', '5772580.61', 82, '2021-12-15', 'Et eligendi voluptatem perspiciatis debitis repudiandae aut. Vitae occaecati sed commodi ipsam consequuntur officia qui.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(29, 'SP97', 'culpa', 17, NULL, '3695614.53', '2024422.76', 17, '2021-02-18', 'Suscipit optio ut sapiente qui et inventore. Voluptatem quo minima qui consectetur.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(30, 'SP93', 'perferendis', 17, NULL, '5856046.66', NULL, 6, '2021-11-09', 'Velit nihil atque fuga qui iusto suscipit dolorem. Ut et quos numquam et omnis voluptatibus nihil tenetur. Fugiat temporibus facere ad consequatur laboriosam.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(31, 'SP37', 'quae', 17, NULL, '6195504.09', NULL, 11, '2020-10-27', 'Nihil numquam ab maxime consequuntur. Fugit dolor perspiciatis corporis aut quam. Et aut id animi ullam. Eaque saepe error quia sint totam explicabo quisquam.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(32, 'SP41', 'cupiditate', 17, NULL, '2640816.47', NULL, 57, '1988-04-09', 'Libero maxime rem accusantium temporibus eveniet. Vitae laboriosam cum reiciendis natus neque et. Recusandae iure incidunt illo quibusdam reiciendis sint. Occaecati velit et quis non aut rerum ut.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(33, 'SP83', 'consequuntur', 17, NULL, '9963479.00', NULL, 30, '1992-05-23', 'Et nulla veniam possimus est libero. Consequatur placeat ut voluptatem in natus expedita. Laudantium natus ut non ut.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(34, 'SP66', 'molestias', 18, NULL, '3481809.54', NULL, 48, '1984-03-12', 'Voluptatum quos voluptatem maxime in aliquam perspiciatis deserunt. Totam saepe quod aperiam et. Voluptates dolores accusamus nesciunt ut rerum velit. Voluptates nihil et et.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(35, 'SP19', 'ad', 18, NULL, '9933897.19', NULL, 70, '1998-12-11', 'Aut non ea quibusdam quo qui sit deserunt repudiandae. Et asperiores ut asperiores alias quia qui.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(36, 'SP34', 'aut', 18, NULL, '4744475.47', '1314385.38', 28, '1979-03-19', 'Ullam ipsum repellat consectetur odio. Quo debitis vel dolore eveniet quia quod velit. Sed amet sint maiores eligendi. Modi reprehenderit voluptas sint consequatur assumenda aut velit.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(37, 'SP10', 'aperiam', 18, NULL, '2448897.92', '5196011.37', 61, '2003-12-22', 'Quibusdam ullam eligendi voluptas reprehenderit voluptas dolor. Non culpa quis doloribus voluptas ut expedita dolorem. Et ea consequatur repellat. Asperiores labore et illo dolor dolorem harum qui.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(38, 'SP13', 'distinctio', 18, NULL, '6749624.36', NULL, 24, '2010-12-29', 'Impedit aut non corporis animi voluptatum repudiandae repellat. Quidem est est fuga quae. Architecto et impedit beatae adipisci.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(39, 'SP94', 'dolor', 18, NULL, '162284.35', NULL, 48, '1978-05-24', 'Facere est similique ullam optio. Debitis cum iste non aspernatur ipsam molestias. Culpa sit incidunt quis eos.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(40, 'SP44', 'aut', 18, NULL, '343026.57', '4027485.80', 33, '2012-05-14', 'Sapiente nihil enim tempora repudiandae quaerat expedita. Et eos possimus eos molestiae. Cum minima quis magnam sint eos numquam architecto.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(41, 'SP70', 'quis', 18, NULL, '677972.62', '6558919.18', 86, '2022-12-08', 'Odio omnis magni explicabo exercitationem quis enim sapiente et. Assumenda quibusdam sit non tenetur molestiae. Reiciendis qui voluptate sit aut porro quisquam atque.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(42, 'SP08', 'id', 18, NULL, '8584029.12', NULL, 33, '2006-05-08', 'Consequatur voluptatem qui aut non ipsum nihil itaque deserunt. Dolorem omnis blanditiis tenetur rerum. Assumenda illo aut iusto.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(43, 'SP40', 'cupiditate', 18, NULL, '5162879.02', NULL, 27, '1971-09-16', 'Maxime ut voluptas dolores maxime impedit voluptas maxime aut. Blanditiis fuga ea incidunt provident facere ipsa voluptas.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(44, 'SP52', 'natus', 19, NULL, '8891780.57', '1964700.80', 55, '1982-01-08', 'Recusandae perferendis deserunt placeat soluta aliquam non libero. Consectetur repudiandae ut vitae. Corrupti occaecati quisquam aut corrupti asperiores asperiores suscipit.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(45, 'SP72', 'rerum', 19, NULL, '807289.59', '6853115.53', 15, '2012-05-27', 'Officiis ut fugiat quod doloribus eaque dolores est. Laudantium vel pariatur dolorem est. Molestiae ipsum aut et. Voluptas reprehenderit hic vitae.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(46, 'SP17', 'suscipit', 19, NULL, '1438243.68', '3321730.32', 89, '2012-10-05', 'Et dolore omnis voluptas repudiandae aliquid aperiam voluptatem est. Labore cupiditate omnis aspernatur. Labore sed reprehenderit voluptates ullam sint.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(47, 'SP42', 'est', 19, NULL, '9532286.09', '5442327.48', 87, '2001-01-03', 'Harum sed reiciendis consequatur sed provident corporis ex hic. Ut minus sed labore autem suscipit beatae animi debitis. Itaque autem optio saepe aut. Sint fugiat deleniti saepe cum illum voluptatum.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(48, 'SP74', 'aut', 19, NULL, '5049195.92', '1866196.80', 28, '2006-06-23', 'Aut ipsum qui omnis laudantium. Deleniti soluta porro qui. Voluptas aut qui magni natus quia et. Et deleniti omnis eos.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(49, 'SP73', 'ducimus', 19, NULL, '6088759.65', NULL, 45, '2016-12-27', 'Amet aperiam maiores ut aliquid. Dolorem harum qui qui odio tempore. Vitae eum reprehenderit voluptates molestias temporibus deserunt voluptates. Aut quia omnis voluptas quo.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(50, 'SP78', 'id', 19, NULL, '1556989.79', '4994201.12', 13, '1998-07-29', 'Nisi quis aspernatur distinctio vitae sit fugit. Itaque qui perspiciatis iusto vel autem quo. Sunt itaque sit et incidunt omnis sapiente.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(51, 'SP87', 'commodi', 19, NULL, '1648984.41', '68267.72', 2, '2014-05-15', 'Quis reprehenderit eaque saepe voluptatem. Illum sed possimus vel quas facere magnam qui. Inventore quo ut reprehenderit maxime possimus cum odit pariatur.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(52, 'SP54', 'sit', 19, NULL, '3277558.62', '2914319.14', 5, '2010-11-18', 'Tenetur sit ut voluptatem nesciunt. Asperiores repellat totam porro sunt. Nam dolorum ullam eaque aliquam molestiae voluptate.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(53, 'SP76', 'et', 19, NULL, '835768.32', '472266.37', 38, '1983-10-14', 'Quis assumenda soluta exercitationem beatae. Tenetur et ab qui similique. Ullam quia libero et laborum. Culpa aliquid quis sit voluptatem error odit et nulla.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(54, 'SP71', 'qui', 20, NULL, '4596536.61', '238430.41', 27, '2000-11-05', 'Quasi quasi voluptatem eos at fuga asperiores. Ea beatae maiores et nisi autem. Sit est ut quidem aperiam quis rerum animi.', 1, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(55, 'SP32', 'accusantium', 20, NULL, '3930366.02', '4241093.05', 42, '1994-03-17', 'Quasi qui non veniam deleniti praesentium expedita et. Non veritatis rerum et debitis odio. Est vel ut cum quia in aut.', 0, '2025-03-18 05:41:18', '2025-03-18 05:41:18'),
-(57, 'SP39', 'et', 21, NULL, '2338304.84', NULL, 87, '2002-10-26', 'Et explicabo beatae qui consequatur non voluptates expedita dolorum. Consequatur minima nisi fuga vel itaque error accusamus. Et eos alias cum minus.', 1, '2025-03-18 05:43:17', '2025-03-18 05:43:17'),
-(59, 'SP57', 'sed', 26, NULL, '628911.47', '397720.07', 96, '2012-07-17', 'Asperiores deleniti et consequatur illo vero atque accusamus. Neque quaerat totam aut molestias ducimus. Maxime inventore et delectus qui incidunt magni voluptatem quas.', 0, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(60, 'SP06', 'et', 26, NULL, '1328798.60', NULL, 71, '1973-03-23', 'Officia debitis voluptas dolorum in. Pariatur aut ab quos exercitationem vel rerum quis. Commodi labore molestias tenetur dolore.', 0, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(61, 'SP68', 'nihil', 26, NULL, '7189766.87', NULL, 81, '1995-07-14', 'Laudantium consequuntur et cum qui ipsam. Velit vel quia dolorem. Molestiae perspiciatis hic quia iusto culpa aliquam. Est quis minus et quia assumenda.', 1, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(62, 'SP48', 'reprehenderit', 26, NULL, '4853480.67', NULL, 51, '2000-10-31', 'Non temporibus iusto omnis eaque ad nemo dolorum. Aliquam iusto minima quis totam consectetur. Ipsum molestiae non quia.', 0, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(63, 'SP23', 'beatae', 26, NULL, '4158341.51', NULL, 92, '2002-05-17', 'Cumque repudiandae vitae voluptate accusamus nam facilis. Iste et corporis accusamus autem numquam voluptatum. Dolorem nemo rem sit incidunt vel. Dicta aliquid quam omnis dolore labore.', 0, '2025-03-18 05:45:41', '2025-03-18 05:45:41'),
-(64, 'SP29', 'nisi', 26, NULL, '4216204.31', NULL, 42, '1975-11-13', 'Maxime eos magnam doloribus rerum facere officia rerum qui. Dolore distinctio quisquam id qui. Error quidem autem reiciendis ut.', 0, '2025-03-18 05:45:41', '2025-03-18 05:45:41');
+INSERT INTO `products` (`id`, `ma_san_pham`, `ten_san_pham`, `category_id`, `hinh_anh`, `gia`, `gia_khuyen_mai`, `so_luong`, `ngay_nhap`, `mo_ta`, `trang_thai`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(53, 'SP03', 'Iphone 15', 3, 'images/products/gRn4ITULHLpzQdKvMxQmElxWLOrx9nwECj74A9bi.jpg', '2500000.00', '2000000.00', 15, '2025-03-23', 'okokokoko', 1, '2025-03-27 00:45:28', '2025-04-06 07:42:28', '2025-04-06 07:42:28'),
+(54, 'SP04', 'Iphone 15ProMax', 6, 'images/products/nAz8IVtR64Nm0ovXpE0PWpNBcVEdHRlCCV1Uz2k3.jpg', '200000.00', '150000.00', 5, '2025-03-14', 'okoko', 1, '2025-03-27 06:15:06', '2025-03-27 06:15:16', NULL),
+(55, 'SP01', 'Linen Blend Pants', 8, 'images/products/O3Y1lbdajgCM1q16mgnIv0bKHTtWe1tXNYjoOvYm.jpg', '2500000.00', '1900000.00', 50, '2025-04-05', NULL, 1, '2025-04-05 01:35:57', '2025-04-05 01:57:38', NULL),
+(56, 'SP02', 'Áo thun cổ tròn basic', 8, 'images/products/jvTou8G0xoEErGSqi8oYFKdjeneJvPz7T79o0dxl.jpg', '155000.00', '140000.00', 20, '2025-04-05', NULL, 1, '2025-04-05 01:48:42', '2025-04-05 01:48:42', NULL),
+(57, 'SP05', 'Áo thun cờ Việt Nam', 8, 'images/products/zVjFMz7hdHZya2cHSm3MS8MFz4ZwSKNqVqMBxIz0.jpg', '340000.00', '290000.00', 5, '2025-04-05', NULL, 1, '2025-04-05 01:59:45', '2025-04-05 02:00:09', NULL),
+(58, 'SP06', 'Váy maxi dài', 9, 'images/products/CLs0SIQY0ZyGPxe7PVZuTliJo4qq3LAxZfQW7VUv.jpg', '450000.00', '400000.00', 20, '2025-04-05', NULL, 1, '2025-04-05 02:09:19', '2025-04-05 02:09:19', NULL),
+(59, 'SP07', 'Váy tiểu thư', 9, 'images/products/cuZUp94eHPTlWzu64oTVSXts6zVyciAxGZcasV4D.jpg', '340000.00', '290000.00', 3, '2025-04-05', NULL, 1, '2025-04-05 02:10:29', '2025-04-05 02:11:15', NULL),
+(60, 'SP08', 'Áo thun tie-dye', 8, 'images/products/5z4tHUcT1A3uMhJjW7Cc7qzCvjTtVX576RASvitQ.jpg', '120000.00', '90000.00', 9, '2025-04-05', NULL, 1, '2025-04-05 02:10:58', '2025-04-05 02:10:58', NULL),
+(61, 'SP09', 'Áo Croptop', 8, 'images/products/irIw2zgo1rlOu4FjT96aMObKdkbO8hTYaIBb5tQd.jpg', '230000.00', '190000.00', 4, '2025-04-05', NULL, 1, '2025-04-05 02:11:56', '2025-04-05 02:11:56', NULL),
+(62, 'SP10', 'Bộ đồ cộc Nữ thể thao', 7, 'images/products/4deJUUjY3qddU7uVxF7IIJV5Im7A1rjV1g1U2KAj.jpg', '250000.00', '200000.00', 12, '2025-04-06', 'Hàng đẹp vãi ò', 1, '2025-04-06 07:43:10', '2025-04-06 07:43:10', NULL),
+(63, 'SP11', 'Sơ mi công sở', 5, 'images/products/9OY0tvicIGvPPtKc6e7yJlEKzDZSFhxIenSUIfMQ.jpg', '150000.00', '120000.00', 5, '2025-04-06', NULL, 1, '2025-04-06 07:44:07', '2025-04-06 07:44:07', NULL),
+(64, 'SP12', 'Sơ mi sọc cộc tay Nữ', 5, 'images/products/N7kyFue6svJkJheBSTt7iojfvAElKtoy8PSMQu2a.jpg', '145000.00', '120000.00', 10, '2025-04-06', NULL, 1, '2025-04-06 07:45:00', '2025-04-06 07:45:00', NULL),
+(65, 'SP13', 'Quần ống rộng', 6, 'images/products/jn5SD5nrRyb9dQL5joHbcMIgtCvzkswSZu6R37c5.png', '180000.00', '160000.00', 10, '2025-04-06', NULL, 1, '2025-04-06 07:46:58', '2025-04-06 07:46:58', NULL),
+(66, 'SP14', 'Áo T-shirt màu xanh quân đội', 8, 'images/products/6Muw9Zb6T3K7LolabxQoPsa6qIIkw3JlSMcY06XC.jpg', '200000.00', '120000.00', 8, '2025-04-08', 'Sản phẩm rất tốt', 1, '2025-04-07 12:37:22', '2025-04-07 12:37:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -331,16 +354,21 @@ CREATE TABLE `reviews` (
   `customer_id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rating` int NOT NULL
+  `rating` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `reviews`
 --
 
-INSERT INTO `reviews` (`id`, `customer_id`, `product_id`, `content`, `rating`) VALUES
-(1, 1, 1, 'Sản phẩm rất tốt', 1),
-(2, 1, 2, 'Sản phẩm không tốt', 2);
+INSERT INTO `reviews` (`id`, `customer_id`, `product_id`, `content`, `rating`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(40, 21, 58, 'Rất hài lòng', 5, '2025-04-05 02:13:49', '2025-04-05 02:13:49', NULL),
+(41, 5, 60, 'Sản phẩm ok', 4, '2025-04-05 02:14:05', '2025-04-05 02:14:05', NULL),
+(42, 4, 61, 'Đồ xấu vãi lần sau đéo mua nữaa', 1, '2025-04-05 02:14:27', '2025-04-05 02:14:27', NULL),
+(43, 21, 56, 'okokok', 5, '2025-04-05 04:27:39', '2025-04-05 04:27:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -362,7 +390,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('rmRXgfrnnsgATvkTHdD330nk1psL8gKvSpX3MusE', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiR3hkdlpISWEzMWI1a1EwOHlyYXRkaHFoSXZhTDR2aVA3c05qeHgwVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1742303600);
+('BqBIo1MN32vdt2712YymOlJ5VJSvEJSIHES0gYJw', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRnNXQTdXaVVzN0x0M3BEOGI3SXFCdEdsSTlWZTJ1TmVWcmZSeWRSSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbGllbnRzL2Jsb2ciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjM2OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vcHJvZHVjdHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1744057356),
+('KPbkPAVS2mvSpDhtMymriwZDz0lKOCHGS1XW72RT', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoieWZybUVvVEpzNlR4VG05WHhIc3VEcTBBVDByN0Q5ekhLVEt5NjRMSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jbGllbnRzL3Nob3AvcHJvZHVjdC82NSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0cyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1744096132);
 
 -- --------------------------------------------------------
 
@@ -376,10 +405,32 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` enum('admin','user') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Tuấn Anh', 'anhntph51526@gmail.com', NULL, '$2y$12$7U8gGJu.oPUbluor.8SgHuAUymJxc90YiLQMQkd5v4mOK83ohaVAO', 'admin', 'nrjNW0lgBit7jwmJbEDh7UDhf0pnX7UM8FWbtswUrDinswUcKCj5AYfc0RPx', '2025-04-01 05:09:09', '2025-04-03 05:14:57'),
+(2, 'Grant Fay', 'beer.charles@example.net', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'OLU96uPsWWNiyKcrfgRZjeSCUqJhektPpVWwmrQoBbh9bhkYZFPXVmR0VmKv', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(3, 'Luna Kuhic', 'uoreilly@example.org', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'GL2LnFpyxKayQBznZPY6fvJ6FNHdPqyQNEoECYlCrero07oB2TotIjQgTfaE', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(4, 'Prof. Billy Schumm', 'tania07@example.com', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'vQRrUt2XZm', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(5, 'Ana Howe', 'iboehm@example.net', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'j5qPjyWbGJ', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(6, 'Kade Lang', 'terence47@example.net', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', '4cPTwGRPEr', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(7, 'Alice Christiansen', 'maximillia44@example.org', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'lhENckPGUL', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(8, 'Letitia Gottlieb', 'zack.carter@example.com', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'XA1rYPKyAW', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(9, 'Isabelle Dach', 'zmacejkovic@example.org', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'jij4oNvQBh', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(10, 'Theresa Cremin', 'bparker@example.org', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'rxoyyQ98y9', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(11, 'Wilhelm Mitchell Sr.', 'gaston.jakubowski@example.com', '2025-04-01 05:32:26', '$2y$12$YUQ6LgjK6P7eS6WNr0X9COh7nrIRZ3vmptbT9qHYiDiMbKkL7ilZm', 'user', 'SOfgKRXynY', '2025-04-01 05:32:26', '2025-04-01 05:32:26'),
+(12, 'Hahahaha', 'tuananh@gmail.com', NULL, '$2y$12$W2ow4UdqqedV3A/m/11DMuoXReUMsv7EwIevYkQS.B0ckLfRz7/qu', 'user', NULL, '2025-04-01 05:50:36', '2025-04-01 05:50:36'),
+(13, 'Tuấn Anhh', 'anhntph515267@gmail.com', NULL, '$2y$12$tA6pRW6VIYYS3eo.ApvWOuIy9uRqskMwOIs.SWfnB.Or51VtcitSy', 'user', NULL, '2025-04-02 00:41:12', '2025-04-02 00:41:12'),
+(14, 'Cao Quốc An', 'ancq51578@gmail.com', NULL, '$2y$12$3qwzf0WybvjPgN01YN8RpOv7CAYVCcnG5uk90f8eWSJwHfDvR/aPG', 'user', NULL, '2025-04-03 05:00:12', '2025-04-03 05:00:12'),
+(15, 'Tuấn Anh', 'tuananh123@gmail.com', NULL, '$2y$12$tHxD1jIKjiRJynBgMrzy2eFP3IwV1ZwN3VG5GzahvFDDkqqS09kNW', 'user', NULL, '2025-04-03 05:38:25', '2025-04-03 05:38:25');
 
 --
 -- Indexes for dumped tables
@@ -413,8 +464,7 @@ ALTER TABLE `categories`
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `contacts_email_unique` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customers`
@@ -500,25 +550,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -536,31 +586,31 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

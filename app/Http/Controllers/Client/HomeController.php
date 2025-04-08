@@ -23,9 +23,15 @@ class HomeController extends Controller
     }
     public function blog()
     {
-        //Lấy 4 bài viết mới nhất
         $posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
         $latestPost = Post::orderBy('created_at', 'desc')->first();
-        return view('client.blog', compact('posts'));
+
+        return view('client.blog', compact('posts', 'latestPost'));
+    }
+    public function showPost($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return view('client.blog-detail', compact('post'));
     }
 }
